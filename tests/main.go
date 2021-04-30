@@ -5,17 +5,19 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/swarm-cache/go-adapter/export"
+	cache "github.com/swarm-cache/go-adapter/export"
 )
 
 func main() {
-
-	err, c := export.Connect("127.0.0.1:3666")
+	err, c := cache.Connect("127.0.0.1:3666", &cache.J{
+		"V_NODE_RES_TIMEOUT": 2000,
+	})
 	if err != nil {
 		fmt.Println(err)
+		return
 	}
-	i := 0
 
+	i := 0
 	for i < 1000 {
 		str := "love" + strconv.Itoa(i)
 		bStr := []byte(str)

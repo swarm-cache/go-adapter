@@ -72,6 +72,10 @@ func (a *Adapter) handleMessage() {
 			log.Errorf("Could not decode incoming message! %s", err)
 		}
 
+		if glob.V_LOG_IO_MSG {
+			log.Infof("Message received! \nMeta: %s \nData: %s", meta, data)
+		}
+
 		go a.TraverseCBs(meta, data)
 	}
 }

@@ -9,7 +9,7 @@ import (
 	"github.com/swarm-cache/go-adapter/glob"
 )
 
-// The general purpose json type
+// The general purpose json map type
 type J = glob.J
 
 // Splits an incoming message into meta and data (binary).

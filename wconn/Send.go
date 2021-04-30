@@ -3,6 +3,7 @@ package wconn
 import (
 	"github.com/gorilla/websocket"
 	"github.com/prometheus/common/log"
+	"github.com/swarm-cache/go-adapter/glob"
 	"github.com/swarm-cache/go-adapter/lib"
 )
 
@@ -19,9 +20,9 @@ func (a *Adapter) Send(meta J, data *[]byte) error {
 
 	a.Conn.WriteMessage(websocket.BinaryMessage, *out)
 
-	// if glob.F_LOG_IO_MSG {
-	// 	log.Infof("Message sent! \nMeta: %s \nData: %s", meta, data)
-	// }
+	if glob.V_LOG_IO_MSG {
+		log.Infof("Message sent! \nMeta: %s \nData: %s", meta, data)
+	}
 
 	return nil
 }
