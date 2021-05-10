@@ -1,3 +1,4 @@
+### Abstract
 Golang client adaptor for nodes. Used to connect to and communicate with nodes from:  https://github.com/swarm-cache/node. Can set, get, delete data from a swarm of nodes. Operations set/get/del are asynchronous by nature but handled in synchronous manner.
 
 ### Include
@@ -26,10 +27,10 @@ func main() {
   }
   
   key := "hello"
-  value := "world!"
+  value := []byte("world!")
   
   // Setting a key => value pair into swarm
-  err := c.Set(key, value)
+  err := c.Set(key, &value)
   if err != nil {
     panic(err)
   }
